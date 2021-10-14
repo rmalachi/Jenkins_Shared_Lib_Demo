@@ -1,0 +1,49 @@
+@Library ('vtg_shared_lib') _
+
+pipeline {
+    agent any
+    
+    parameters {
+        string(name: 'USER', defaultValue: 'Ron', description: 'A user that triggers the pipeline')
+        string(name: 'REPO', defaultValue: 'myrepo', description: 'A user that triggers the pipeline')
+        string(name: 'BRANCH', defaultValue: 'master', description: 'A user that triggers the pipeline')
+        string(name: 'REQ_FILE', defaultValue: 'requirements.txt', description: 'A user that triggers the pipeline')
+        booleanParam(name: 'IS_PYTHON', defaultValue: true, description: 'Toggle this value')
+        choice(name: 'PYTHON_VERSION', choices: ['2.7', '3.6', '3.8'], description: 'Pick something')
+        string(name: 'PYTHON_SCRIPT', defaultValue: 'script.py', description: 'A user that triggers the pipeline')
+    }
+
+    environment {
+		OUTPUT_PATH = './outputs/'
+	}
+
+    stages {
+        stage('Setup') {
+            steps {
+                sh 'echo "--- This is a teplate test ---"'
+                echo "Pipeline - Setup - step"
+                echo "Pipeline triggered by ${params.USER}"
+                echo "Pipeline triggered by ${params.REPO}"
+                echo "Pipeline triggered by ${params.BRANCH}"
+                echo "Pipeline triggered by ${params.REQ_FILE}"
+                echo "Pipeline triggered by ${params.IS_PYTHON}"
+                echo "Pipeline triggered by ${params.PYTHON_VERSION}"
+                echo "Pipeline triggered by ${params.PYTHON_SCRIPT}"
+                echo "Pipeline triggered by ${OUTPUT_PATH}"
+            }
+        }
+        
+        stage('Install Requirement') {
+            steps {
+                echo "Pipeline - Install Requirement - step"
+            }
+        }
+        
+        stage('Build') {
+            steps {
+                echo "Pipeline - Build - step"
+            }
+        }
+        
+    }
+}
