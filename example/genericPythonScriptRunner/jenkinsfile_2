@@ -3,40 +3,19 @@
 import tpl.python.runners.tplGenericPythonRunner
 
 pipeline
-{
-    parameters
-    {
-        string(name: 'USER', defaultValue: 'Ron', description: 'A user that triggers the pipeline')
-        string(name: 'REPOSITORY', defaultValue: 'https://github.com/rmalachi/vtg-shared-lib.git', description: 'A user that triggers the pipeline')
-        string(name: 'BRANCH', defaultValue: 'master', description: 'A user that triggers the pipeline')
-        string(name: 'REQUIREMENTS_FILE', defaultValue: 'requirements.txt', description: 'the requirement python modules list')
-        booleanParam(name: 'IS_PYTHON', defaultValue: true, description: 'Toggle this value')
-        choice(name: 'PYTHON_VERSION', choices: ['2.7', '3.6', '3.8'], description: 'Python version')
-        string(name: 'PYTHON_SCRIPT', defaultValue: 'script.py', description: 'Python script name')
-        string(name: 'GROOVY_SCRIPT', description: 'Additinal setup groovy script')
-    }
-    
-    /*
-    agent
-    {
-        label 'linux-host-slave'
-    }
-    */
+{    
     agent any
     
     stages
     {
-        stage('Python script run')
+        stage('Template Test Run')
         {
             steps
             {
                 script
                 {
-                    // docker.image("python:2.7").inside('-u root')
-                    // {
-                        def runner = new tplGenericPythonRunner(this)
-                        runner.run()
-// }
+                    def runner = new tplGenericPythonRunner(this)
+                    runner.run()
                 }
             }
         }
