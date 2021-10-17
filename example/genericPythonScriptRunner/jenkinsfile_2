@@ -1,4 +1,4 @@
-@Library("tikal-pipelib") _
+@Library ('vtg_shared_lib') _
 
 import tpl.python.runners.tplGenericPythonRunner
 
