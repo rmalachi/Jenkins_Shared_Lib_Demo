@@ -7,7 +7,7 @@ pipeline
     parameters
     {
         string(name: 'USER', defaultValue: 'Ron', description: 'A user that triggers the pipeline')
-        string(name: 'REPOSITORY', defaultValue: 'myrepo', description: 'A user that triggers the pipeline')
+        string(name: 'REPOSITORY', defaultValue: 'https://github.com/rmalachi/vtg-shared-lib.git', description: 'A user that triggers the pipeline')
         string(name: 'BRANCH', defaultValue: 'master', description: 'A user that triggers the pipeline')
         string(name: 'REQUIREMENTS_FILE', defaultValue: 'requirements.txt', description: 'the requirement python modules list')
         booleanParam(name: 'IS_PYTHON', defaultValue: true, description: 'Toggle this value')
