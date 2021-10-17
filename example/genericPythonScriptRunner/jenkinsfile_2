@@ -20,11 +20,15 @@ pipeline
         string(name: 'GROOVY_SCRIPT',
                 description: 'Additinal setup groovy script')
     }
+    
+    /*
     agent
     {
         label 'linux-host-slave'
     }
-//    agent any
+    */
+    agent any
+    
     stages
     {
         stage('Python script run')
@@ -33,11 +37,11 @@ pipeline
             {
                 script
                 {
-                    docker.image("python:2.7").inside('-u root')
-                    {
+                    // docker.image("python:2.7").inside('-u root')
+                    // {
                         def runner = new tplGenericPythonRunner(this)
                         runner.run()
-                    }
+// }
                 }
             }
         }
