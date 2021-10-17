@@ -4,6 +4,23 @@ import tpl.python.runners.tplGenericPythonRunner
 
 pipeline
 {    
+    parameters
+    {
+        string(name: 'REPOSITORY',
+                description: 'URL to GIT repository')
+        string(name: 'GIT_TOKEN',
+                description: 'Credential name of GIT user')
+        string(name: 'BRANCH',
+                defaultValue: 'main',
+                description: 'Name of branch')
+        string(name: 'REQUIREMENTS_FILE',
+                description: 'Relative path to the requirements file')
+        string(name: 'PYTHON_SCRIPT_FILE',
+                description: 'Relative path to the python script')
+        string(name: 'GROOVY_SCRIPT',
+                description: 'Additinal setup groovy script')
+    }
+    
     agent any
     
     stages
